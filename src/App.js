@@ -5,7 +5,7 @@ import { FocusableInput } from "./components/FocusableInput";
 import { Grocery } from "./components/Grocery";
 import { ImageGallery } from "./components/ImageGallery";
 import { ListItemsForNavigation } from "./components/ListItemsForNavigation";
-// import { PlayerStatus } from "./components/PlayerStatus";
+import { PlayerStatus } from "./components/PlayerStatus";
 // import { TeamsList } from "./components/TeamsList";
 
 import "./App.css";
@@ -51,9 +51,7 @@ export default function App() {
             <h3>'ImageGallery' test</h3>
             <ImageGallery />
             <br />
-            <h3>'PlayerStatus' test</h3>
-            <PlayerStatus />
-            <br />
+
             <h3>'TeamsList' test</h3>
             <TeamsList />
             <h3>'FocusableInput' test</h3>
@@ -73,10 +71,14 @@ export default function App() {
             <h3>'ListItemsForNavigation' test</h3>
             <ListItemsForNavigation />
             <br />
-            
-             */}
+
             <h3>'Message' test</h3>
             <Message />
+            <br />            
+            
+             */}
+            <h3>'PlayerStatus' test</h3>
+            <PlayerStatus />
             <br />
         </div>
     );
