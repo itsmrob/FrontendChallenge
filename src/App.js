@@ -7,6 +7,7 @@ import { ImageGallery } from "./components/ImageGallery";
 import { ListItemsForNavigation } from "./components/ListItemsForNavigation";
 import { PlayerStatus } from "./components/PlayerStatus";
 // import { TeamsList } from "./components/TeamsList";
+import { Rating } from "./components/Rating";
 
 import "./App.css";
 
@@ -76,10 +77,11 @@ export default function App() {
             <Message />
             <br />            
             
-             */}
-            <h3>'PlayerStatus' test</h3>
+                      <h3>'PlayerStatus' test</h3>
             <PlayerStatus />
             <br />
+             */}
+             <Rating/>
         </div>
     );
 }

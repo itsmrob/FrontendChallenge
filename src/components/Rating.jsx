@@ -24,6 +24,53 @@
  * </div>
  */
 
- export function Rating() {
-	return null;
+import { useState } from "react";
+
+import "../App.css";
+
+const Star = (props) => {
+    const status = props.active ? "active" : null;
+    return (
+        <div>
+            <span className={status} onClick={() => props.onClick(props.index)}>
+                *
+            </span>
+        </div>
+    );
+};
+
+export function Rating() {
+    const initialState = [
+        { status: "" },
+        { status: "" },
+        { status: "" },
+        { status: "" },
+        { status: "" },
+    ];
+
+    const [stars, setStars] = useState(initialState);
+
+    const handleRating = (index) => {
+        const starsCopy = initialState.slice();
+		const updateStars = starsCopy.map((star, starIndex) => {
+			if (starIndex <= index) {
+				return { status: "active" }
+			}
+			return star;
+		});
+        setStars(updateStars);
+    };
+
+    return (
+        <div className="rating">
+            {stars.map((star, index) => (
+                <Star
+                    onClick={handleRating}
+                    key={index}
+                    index={index}
+                    active={star.status}
+                />
+            ))}
+        </div>
+    );
 }
