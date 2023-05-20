@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// import { Message } from "./components/Message";
+import { Message } from "./components/Message";
 import { FocusableInput } from "./components/FocusableInput";
 import { Grocery } from "./components/Grocery";
 import { ImageGallery } from "./components/ImageGallery";
@@ -45,9 +45,6 @@ export default function App() {
     return (
         <div className="App">
             {/* Render here each component from the "components" directory
-            <h3>'Message' test</h3>
-            <Message />
-            <br />
             <h3>'FocusableInput' test</h3>
             <FocusableInput />
             <br />
@@ -71,10 +68,15 @@ export default function App() {
             <ImageGallery links={images} />
             <br />
     
-        */}
+       
 
             <h3>'ListItemsForNavigation' test</h3>
             <ListItemsForNavigation />
+            <br />
+            
+             */}
+            <h3>'Message' test</h3>
+            <Message />
             <br />
         </div>
     );

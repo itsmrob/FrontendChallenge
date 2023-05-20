@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
 // This can be passed through props as well. The constant is declared here for convenience
 
 /** Add the properties you consider, there are no specific requirements related to what you have to render. Be creative :) */
-const items = Array(10).fill({});
+// const items = Array(10).fill({});
 
 const itemsList = [
     {
@@ -65,14 +65,14 @@ export function ListItemsForNavigation(props) {
 
     function handleKeyDown(event) {
         const { key } = event;
-        if (key === "ArrowUp" || key === "ArrowRight") {
-            setSelectedIndex((prevIndex) =>
-                prevIndex > 0 ? prevIndex - 1 : prevIndex
-            );
-        }
-        if (key === "ArrowDown" || key === "ArrowLeft") {
+        if (key === "ArrowRight" || key === "ArrowUp") {
             setSelectedIndex((prevIndex) =>
                 prevIndex < itemsList.length - 1 ? prevIndex + 1 : prevIndex
+            );
+        }
+        if (key === "ArrowLeft" || key === "ArrowDown") {
+            setSelectedIndex((prevIndex) =>
+                prevIndex > 0 ? prevIndex - 1 : prevIndex
             );
         }
         // Add the proper logic to calculate the index that correspond to the item that should be focused.
