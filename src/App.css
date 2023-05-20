@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.image-gallery img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.items-nav {
+  display: flex;
+  justify-content: center;
+  outline:none;
+}
+
+.navigation-image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.focused-image {
+  border: 2px solid red;
+}
