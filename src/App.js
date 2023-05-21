@@ -8,6 +8,7 @@ import { ListItemsForNavigation } from "./components/ListItemsForNavigation";
 import { PlayerStatus } from "./components/PlayerStatus";
 // import { TeamsList } from "./components/TeamsList";
 import { Rating } from "./components/Rating";
+import { TeamsList } from "./components/TeamsList";
 
 import "./App.css";
 
@@ -80,8 +81,9 @@ export default function App() {
                       <h3>'PlayerStatus' test</h3>
             <PlayerStatus />
             <br />
+            <Rating/>
              */}
-             <Rating/>
+             <TeamsList/>
         </div>
     );
 }

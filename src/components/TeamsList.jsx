@@ -13,85 +13,146 @@
 import { useState } from "react";
 
 const TEAMS = [
-	{
-		name: "Red",
-		players: ["Robin", "Rey", "Roger", "Richard"],
-		games: [
-			{
-				score: 10,
-				city: "LA",
-			},
-			{
-				score: 1,
-				city: "NJ",
-			},
-			{
-				score: 3,
-				city: "NY",
-			},
-		],
-	},
-	{
-		name: "Blue",
-		players: ["Bob", "Ben"],
-		games: [
-			{
-				score: 6,
-				city: "CA",
-			},
-			{
-				score: 3,
-				city: "LA",
-			},
-		],
-	},
-	{
-		name: "Yellow",
-		players: ["Yesmin", "Yuliana", "Yosemite"],
-		games: [
-			{
-				score: 2,
-				city: "NY",
-			},
-			{
-				score: 4,
-				city: "LA",
-			},
-			{
-				score: 7,
-				city: "AK",
-			},
-		],
-	},
+    {
+        name: "Red",
+        players: ["Robin", "Rey", "Roger", "Richard"],
+        games: [
+            {
+                score: 10,
+                city: "LA",
+            },
+            {
+                score: 1,
+                city: "NJ",
+            },
+            {
+                score: 3,
+                city: "NY",
+            },
+        ],
+    },
+    {
+        name: "Blue",
+        players: ["Bob", "Ben"],
+        games: [
+            {
+                score: 6,
+                city: "CA",
+            },
+            {
+                score: 3,
+                city: "LA",
+            },
+        ],
+    },
+    {
+        name: "Yellow",
+        players: ["Yesmin", "Yuliana", "Yosemite"],
+        games: [
+            {
+                score: 2,
+                city: "NY",
+            },
+            {
+                score: 4,
+                city: "LA",
+            },
+            {
+                score: 7,
+                city: "AK",
+            },
+        ],
+    },
 ];
 
+const Items = (props) => {
+	const displaying = `Team Name: ${props.name} - Player’s quantity: ${props.quantity} - Total Score of each team: ${props.score}`
+    return <li>{displaying}</li>;
+};
+
 export function TeamsList() {
-	const [teams, setTeams] = useState(TEAMS);
+    const [teams, setTeams] = useState([]);
+    const [error, setError] = useState(true);
 
-	// Order teams by score (highest to lowest)
-	function orderTeamByScoreHighestToLowest() {
-		// Write your code here
-	}
+    const newTeams = TEAMS.map((team) => {
+        const teamName = team.name ? team.name : "";
+        const teamQuantity = team.players ? team.players.length : 0;
+        const teamScore = team.games
+            ? team.games.map((v) => v.score).reduce((a, b) => a + b, 0)
+            : 0;
+        return {
+            teamName,
+            teamQuantity,
+            teamScore: teamScore,
+        };
+    });
 
-	// Order teams by score (lowest to highest)
-	function orderTeamByScoreLowestToHighest() {
-		// Write your code here
-	}
+    function setInitialList() {
+        setTeams(newTeams);
+        setError(false);
+    }
 
-	// Filtering teams that with at least 3 players
-	function teamsWithMoreThanThreePlayers() {
-		// Write your code here
-	}
+    // Order teams by score (highest to lowest)
+    function orderTeamByScoreHighestToLowest() {
+        // Write your code here
+        if (teams.length) {
+            const highestToLowest = newTeams.sort(
+                (a, b) => a.teamScore - b.teamScore
+            );
+            setTeams(highestToLowest);
+            setError(false);
+        }
+    }
 
-	return (
-		<div>
-			<button onClick={() => setTeams(TEAMS)}>Initial list</button>
+    // Order teams by score (lowest to highest)
+    function orderTeamByScoreLowestToHighest() {
+        // Write your code here
+        if (teams.length) {
+            const lowestToHighest = newTeams.sort(
+                (a, b) => a.teamScore + b.teamScore
+            );
+            setTeams(lowestToHighest);
+        }
+    }
 
-			<button>Highest to Lowest</button>
-			<button>Lowest to Highest</button>
-			<button>Teams with at least 3 players</button>
+    // Filtering teams that with at least 3 players
+    function teamsWithMoreThanThreePlayers() {
+        // Write your code here
+        if (teams.length) {
+            const threePlayers = newTeams.filter(
+                (team) => team.teamQuantity >= 3
+            );
+            setTeams(threePlayers);
+            setError(false);
+        }
+    }
 
-			<ul className="teams">{/** Render the list of teams */}</ul>
-		</div>
-	);
+    return (
+        <div>
+            <button onClick={setInitialList}>Initial list</button>
+
+            <button onClick={orderTeamByScoreHighestToLowest}>
+                Highest to Lowest
+            </button>
+            <button onClick={orderTeamByScoreLowestToHighest}>
+                Lowest to Highest
+            </button>
+            <button onClick={teamsWithMoreThanThreePlayers}>
+                Teams with at least 3 players
+            </button>
+            {error && <h4>Click "Initial List" to load values</h4>}
+            {!error && (
+                <ul className="teams">
+                    {teams.map((team, index) => (
+                        <Items
+                            key={index}
+                            name={team.teamName}
+                            quantity={team.teamQuantity}
+                            score={team.teamScore}
+                        />
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 }
