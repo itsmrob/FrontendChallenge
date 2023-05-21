@@ -1,0 +1,23 @@
+.input-container .text-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+  }
+  
+  .input-container .text-input:focus {
+    outline: none;
+    border-color: #8cacc5;
+  }
+  
+  .input-container button {
+    padding: 10px 20px;
+    background-color: #8cacc5;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .input-container button:hover {
+    background-color: #5a7f94;
+  }
+  

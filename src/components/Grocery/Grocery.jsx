@@ -24,15 +24,30 @@
 
 import { useState } from "react";
 
+import "./Grocery.css";
+
 function Product(props) {
     const handlePlus = (id) => props.onVoting("adding", id);
     const handleMinus = (id) => props.onVoting("substracting", id);
     return (
-        <li>
-            <span>{`${props.name} - ${props.votes}`}</span>
-            <button onClick={() => handlePlus(props.id)}>+</button>
-            <button onClick={() => handleMinus(props.id)}>-</button>
-        </li>
+        <div className="grocery-item">
+            <div className="grocery-badge">
+                <span className="grocery-votes">{props.votes}</span>
+            </div>
+            <span className="grocery-text">{`${props.name}`}</span>
+            <div className="grocery-buttons">
+                <button
+                    className="grocery-minus-button"
+                    onClick={() => handleMinus(props.id)}>
+                    -
+                </button>
+                <button
+                    className="grocery-add-button"
+                    onClick={() => handlePlus(props.id)}>
+                    +
+                </button>
+            </div>
+        </div>
     );
 }
 
@@ -53,8 +68,9 @@ export function Grocery({ products }) {
         });
         setProducts(newProductsList);
     };
+
     return (
-        <ul>
+        <div className="grocery-option">
             {products.map((product) => (
                 <Product
                     id={product._id}
@@ -65,6 +81,6 @@ export function Grocery({ products }) {
                 />
             ))}
             {/* Render an array of products, which should call onVote when + or - is clicked */}
-        </ul>
+        </div>
     );
 }

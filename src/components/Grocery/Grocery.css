@@ -1,0 +1,64 @@
+.grocery-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.grocery-item {
+    display: flex;
+    width: 300px; /* Ancho fijo */
+    height: 50px; /* Alto fijo */
+    text-align: start;
+    margin-bottom: 2px;
+}
+
+.grocery-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.grocery-votes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.grocery-text {
+    flex-grow: 1;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.grocery-buttons {
+    display: flex;
+}
+
+.grocery-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+.grocery-add-button {
+    margin-left: 5px;
+  }
+  
+  .grocery-minus-button{
+    margin-right: 5px;
+  }

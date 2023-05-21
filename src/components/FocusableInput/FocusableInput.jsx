@@ -9,17 +9,19 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
+import "./FocusableInput.css";
+
 // function Input(props) { Can't achieve this function since we cannot pass "ref" as a prop through a functional component.
 //     // Implement
 // }
 
 const Input = React.forwardRef((props, ref) => {
-    return <input type="text" ref={ref} placeholder={props.placeholder} />;
+    return <input type="text" ref={ref} placeholder={props.placeholder} className="text-input" />;
 });
 
 const TextInput = React.forwardRef((props, ref) => {
     // Implement
-    const { focused, placeholder } = props;
+    const { focused, placeholder, style } = props;
     useEffect(() => {
         if (focused && ref.current) ref.current.focus();
     }, [focused, ref]);
@@ -39,7 +41,7 @@ export function FocusableInput({ focusable = false }) {
         setFocused((prevState) => !prevState);
     };
     return (
-        <div>
+        <div className="input-container">
             <TextInput ref={inputRef} placeholder="Focus" focused={focused} />
             <button onClick={handleFocus}>
                 {focused ? "Lost Focus" : "Set Focus"}

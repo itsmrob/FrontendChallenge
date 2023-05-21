@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { FocusableInput } from "../components/FocusableInput";
-import { Grocery } from "../components/Grocery";
-import { ImageGallery } from "../components/ImageGallery";
-import { ListItemsForNavigation } from "../components/ListItemsForNavigation";
-import { Message } from "../components/Message";
-import { PlayerStatus } from "../components/PlayerStatus";
-import { Rating } from "../components/Rating";
-import { TeamsList } from "../components/TeamsList";
+import { FocusableInput } from "../components/FocusableInput/FocusableInput";
+import { Grocery } from "../components/Grocery/Grocery";
+import { ImageGallery } from "../components/ImageGallery/ImageGallery";
+import { ListItemsForNavigation } from "../components/ItemsNavigation/ListItemsForNavigation";
+import { Message } from "../components/Message/Message";
+import { PlayerStatus } from "../components/PlayerStatus/PlayerStatus";
+import { Rating } from "../components/Rating/Rating";
+import { TeamsList } from "../components/TeamsList/TeamsList";
 
 import Layout from "./Layout";
 
