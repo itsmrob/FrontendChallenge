@@ -7,20 +7,23 @@
  * - If on mounting the focused prop is true, the input should receive the focus.
  */
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-function Input(props) {
-    // Implement
-    return <TextInput ref={props.ref}/>
-}
+// function Input(props) { Can't achieve this function since we cannot pass "ref" as a prop through a functional component.
+//     // Implement
+// }
+
+const Input = React.forwardRef((props, ref) => {
+    return <input type="text" ref={ref} placeholder={props.placeholder} />;
+});
 
 const TextInput = React.forwardRef((props, ref) => {
     // Implement
-    return (
-        <div>
-            <input type="text" ref={ref}/>
-        </div>
-    );
+    const { focused, placeholder } = props;
+    useEffect(() => {
+        if (focused && ref.current) ref.current.focus();
+    }, [focused, ref]);
+    return <Input ref={ref} placeholder={placeholder} />;
 });
 
 // Implement:
@@ -30,6 +33,17 @@ const TextInput = React.forwardRef((props, ref) => {
 export function FocusableInput({ focusable = false }) {
     // Implement
     const inputRef = useRef();
+    const [focused, setFocused] = useState(false);
 
-    return <Input ref={inputRef.current.focus()} />
+    const handleFocus = () => {
+        setFocused((prevState) => !prevState);
+    };
+    return (
+        <div>
+            <TextInput ref={inputRef} placeholder="Focus" focused={focused} />
+            <button onClick={handleFocus}>
+                {focused ? "Lost Focus" : "Set Focus"}
+            </button>
+        </div>
+    );
 }

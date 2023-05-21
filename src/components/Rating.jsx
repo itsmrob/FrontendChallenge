@@ -26,7 +26,7 @@
 
 import { useState } from "react";
 
-import "../App.css";
+import "./Rating.css";
 
 const Star = (props) => {
     const status = props.active ? "active" : null;

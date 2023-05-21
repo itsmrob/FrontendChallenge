@@ -7,7 +7,7 @@
  * - When the button is clicked, the image that is in the same div as the button should be removed from the gallery.
  */
 
-import "../App.css";
+import "./ImageGallery.css";
 import { useState } from "react";
 
 function Image({ id, src, onRemove }) {

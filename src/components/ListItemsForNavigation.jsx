@@ -10,7 +10,7 @@
  * NOTE: The keydown event will work once the <ul> receives the focus.
  */
 
-import "../App.css";
+import "./ListItemsForNavigation.css";
 
 import { useEffect, useRef, useState } from "react";
 
